@@ -1,0 +1,22 @@
+<div class="payment-screen">
+	<div class="payment-screen-info">
+		<p ng-if="state.isReady">in about {{state.order_time | date:'mm'}} minutes</p>
+		<h3>${{(state.payment.total)}}</h3>
+		<p>Total Charge</p>
+		<p>Includes a ${{state.payment.tip}} for your valets, Mark and Tony</p>
+		<div ng-if="state.order_state == 5"class="button-bar" >
+		    <a class="button button-stable" ng-click="changeTip(-1)"> - Tip</a>
+		    <a class="button button-stable" ng-click="changeTip(1)"> + Tip</a>
+		 </div>
+	</div>
+	<ion-list ng-if="state.order_state == 5">
+		<ion-radio ng-repeat="choice in state.payment.options"
+             ng-value="choice.value"
+             ng-change="updateChoice(choice)"
+             ng-checked="choice.selected"
+             ng-model="state.payment.type">
+      			{{ choice.text }}
+  		</ion-radio>
+	</ion-list>
+</div>
+   

@@ -1,0 +1,20 @@
+<ion-view view-title="{{state.title}}">
+  <ion-content>
+  	<div class="header-image"><img src="img/paygobuildings.png" /></div>
+    <h2 class="status-bar">Status</h2>
+    <h1 class="title">{{state.title}}</h1>
+    <div ng-if="state.order_state < 5"class="message">{{state.message}}</div>
+  	<infobox ng-if="state.order_state > 1 && state.order_state < 5"></infobox>
+    <payment ng-if="state.order_state >= 5"></payment>
+  </ion-content>
+ 
+  </ion-view>
+  <div ng-if="state.order_state >1 && state.order_state < 5" class="bar bar-footer">
+  <button class="button button-full button-clear footer-button" ng-click="show()">{{state.button_text}}</button>
+</div>
+<div ng-if="state.order_state == 5"  class="bar bar-footer">
+  <div class="button-bar" >
+    <a class="button button-clear footer-button" ng-click="show()">REPARK</a>
+    <a class="button button-clear footer-button" href="#/app/completed">PAY -></a>
+  </div>
+</div>
